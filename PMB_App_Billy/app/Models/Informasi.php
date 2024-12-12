@@ -12,7 +12,7 @@ class Informasi extends Model
         'informasi'
     ];
 
-    public function Akun(): BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

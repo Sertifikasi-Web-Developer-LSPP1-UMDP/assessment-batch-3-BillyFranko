@@ -13,10 +13,9 @@ class InformasiController extends Controller
      */
     public function index()
     {
-        $pengumuman = Informasi::all();
+        $pengumuman = Informasi::with('user')->get();
 
-        return view('adminui.kelolainformasi')
-        ->with('informasi', $pengumuman);
+        return view('adminui.kelolainformasi', compact('pengumuman'));
     }
 
     /**
@@ -24,7 +23,7 @@ class InformasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('adminui.buatinformasi');
     }
 
     /**
@@ -33,10 +32,10 @@ class InformasiController extends Controller
     public function store(Request $request)
     {
         $validate = $request->validate([
-            'title' => 'required',
+            'judul' => 'required',
             'informasi' => 'required'
         ],[
-            'title.required' => 'Harus diisi!',
+            'judul.required' => 'Harus diisi!',
             'informasi.required' => 'Harus diisi!'
         ]);
 
@@ -44,27 +43,33 @@ class InformasiController extends Controller
 
 
         $informasi = new Informasi();
-        $informasi->judul = $validate['title'];
+        $informasi->judul = $validate['judul'];
         $informasi->informasi = $validate['informasi'];
         $informasi->user_id = $user->id;
         $informasi->save();
-        return redirect()->route('adminui.dashboard')->with('Informasi berhasil diumumkan!');
+        return redirect()->route('adminui.kelolainformasi')->with('Informasi berhasil diumumkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Informasi $informasi)
+    public function delete(Request $request)
     {
-        //
+        $id = $request->id;
+        $informasi = Informasi::findOrFail($id);
+        $informasi->delete();
+        return response()->json(['success' => 'Informasi deleted successfully']);
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Informasi $informasi)
+    public function edit($id)
     {
-        //
+    
+        $informasi = Informasi::findOrFail($id);
+
+        return view('adminui.editinformasi', compact('informasi'));
     }
 
     /**

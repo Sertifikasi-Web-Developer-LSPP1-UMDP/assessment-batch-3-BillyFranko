@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" class="max-w-md mx-auto p-6 border-gray-300 rounded-lg shadow-lg">
         @csrf
         <div class="text-bg-primary p-3">
             @if (session('error'))
@@ -11,6 +11,13 @@
                 </div>
             @endif
         </div>
+
+         <div class="flex justify-center items-center m-auto">
+            <a href="/">
+                <img src="{{asset('logo-umdp-1-300x248-2.png')}}">
+            </a>
+        </div>
+
 
         <!-- Email Address -->
         <div>

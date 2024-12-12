@@ -1,6 +1,12 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
+    <form method="POST" action="{{ route('register') }}" class="max-w-md mx-auto p-6 border-gray-300 rounded-lg shadow-lg">
         @csrf
+
+        <div class="flex justify-center items-center m-auto">
+            <a href="/">
+                <img src="{{asset('logo-umdp-1-300x248-2.png')}}">
+            </a>
+        </div>
 
         <!-- Name -->
         <div>

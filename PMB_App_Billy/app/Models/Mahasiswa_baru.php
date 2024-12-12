@@ -9,8 +9,16 @@ class mahasiswa_baru extends Model
 {
     protected $fillable = [
         'nama',
-        'alamat',
+        'jenis_kelamin',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'kewarganegaraan',
         'sekolah_asal',
+        'alamat',
+        'nomor_telp',
+        'email',
+        'pilihan_program_studi',
+        'waktu_kuliah_pilihan'
     ];
 
     public function account(): HasOne{
