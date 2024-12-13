@@ -8,7 +8,6 @@
         padding: 20px;
         border-radius: 8px;
         margin-top: 30px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
     .card-img-top {
@@ -66,26 +65,26 @@
             {{ Session::get('success') }}
         </div>
         @endif
-        <div class="d-flex">
-             <div class="me-auto">
+       <div class="d-flex justify-content-between align-items-center">
+            <div class="me-auto">
                 @if($mahasiswa)
-                  <h2 class="text-success">Welcome, {{$mahasiswa->nama}}</h2>
+                  <h2 class="text">Welcome, {{$mahasiswa->nama}}</h2>
                 @else
-                  <h2 class="text-success">Welcome, {{$user->name}}</h2>
+                  <h2 class="text">Welcome, {{$user->name}}</h2>
                 @endif
             </div>
-        </div>
 
-        <div class="p-0 mb-4">
-            @if ($mahasiswa || $user->is_verified == 0)
-                <button disabled class="btn btn-secondary">
-                    <a href="{{ route('userui.create') }}" class="nav-link primary" style="pointer-events: none;">Daftar Sebagai Mahasiswa Baru</a>
-                </button>
-            @else
-                <button class="btn btn-primary">
-                    <a href="{{ route('userui.create') }}" class="nav-link primary text-white">Daftar Sebagai Mahasiswa Baru</a>
-                </button>
-            @endif
+            <div>
+                @if ($mahasiswa || $user->is_verified == 0)
+                    <button disabled class="btn btn-secondary">
+                        <a href="{{ route('userui.create') }}" class="nav-link primary" style="pointer-events: none;">Daftar Sebagai Mahasiswa Baru</a>
+                    </button>
+                @else
+                    <button class="btn btn-primary">
+                        <a href="{{ route('userui.create') }}" class="nav-link primary text-white">Daftar Sebagai Mahasiswa Baru</a>
+                    </button>
+                @endif
+            </div>
         </div>
 
         <div class="row">

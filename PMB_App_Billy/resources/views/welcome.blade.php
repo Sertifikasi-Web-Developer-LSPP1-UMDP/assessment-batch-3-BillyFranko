@@ -20,13 +20,13 @@
             }
 
             .carousel-item.active img {
-                width: 80%; 
+                width: 70%; 
                 height: auto;
                 filter: none; 
             }
 
             .carousel-item:not(.active) img {
-                width: 80%; 
+                width: 70%; 
                 height: auto;
                 filter: blur(5px);
             }

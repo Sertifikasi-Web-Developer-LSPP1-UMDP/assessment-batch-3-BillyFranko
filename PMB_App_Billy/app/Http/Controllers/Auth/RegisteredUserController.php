@@ -43,6 +43,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
+        session()->flash('success', 'Registration Akun Berhasil, Mohon Tunggu Verifikasi Akun Oleh Admin');
         return redirect(route('login', absolute: false));
     }
 }

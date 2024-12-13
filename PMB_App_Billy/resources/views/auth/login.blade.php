@@ -18,6 +18,12 @@
                     {{ session('error') }}
                 </div>
             @endif
+            @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            <strong class="font-bold">Pesan Berhasil: </strong>
+                            {{ session('success') }}
+                        </div>
+                    @endif
         
 
         <!-- Email Address -->
