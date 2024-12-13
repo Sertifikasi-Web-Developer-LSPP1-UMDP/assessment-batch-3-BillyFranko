@@ -49,24 +49,24 @@
         <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-        <div class="container-fluid bg-primary">
+        <div class="container-fluid bg-success">
             <div class="container">
             <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-1 border-bottom">
                 <div class="col-md-3 mb-2 mb-md-0 ">
-                    <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
-                        <img src="logo-umdp-1-300x248-2.png" alt="Logo" width="100" height="100">
+                    <a href="{{route('userui.dashboard')}}" class="d-inline-flex link-body-emphasis text-decoration-none">
+                        <img src="logo-umdp-1-300x248-2.png" alt="Logo" width="150" height="124">
                     </a>
                 </div>
                 <div class="dropdown">
                     <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle me-5" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
-                        <strong>mdo</strong>
+                        <img src="{{asset('images.jpg')}}" alt="" width="32" height="32" class="rounded-circle me-2">
+                        <strong>{{ Auth::user()->name }}</strong>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        {{-- <li><a class="dropdown-item" href="#">New project...</a></li>
                         <li><a class="dropdown-item" href="#">Settings</a></li>
                         <li><a class="dropdown-item" href="#">Profile</a></li>
-                        <li><hr class="dropdown-divider"></li>
+                        <li><hr class="dropdown-divider"></li> --}}
                         <li><a class="dropdown-item" href="{{route('logout')}}">Sign out</a></li>
                     </ul>
                 </div>

@@ -9,7 +9,8 @@ class Informasi extends Model
 {
     protected $fillable = [
         'judul',
-        'informasi'
+        'informasi',
+        'lampiran_gambar'
     ];
 
     public function user(): BelongsTo

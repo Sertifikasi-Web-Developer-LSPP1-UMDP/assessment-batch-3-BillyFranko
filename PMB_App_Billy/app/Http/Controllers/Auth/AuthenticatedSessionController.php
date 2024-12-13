@@ -24,25 +24,24 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        $request->authenticate();
-        $user = Auth::user();
+        if (Auth::attempt($request->only('email', 'password'))) {
+            $user = Auth::user();
 
-        if($user->role === 'mahasiswa'){
-            if ($user->status === 'unverified') {
-                Auth::logout();
-                
-                return redirect('login')
-                ->with('error', 'Akun anda belum diverifikasi');
-            }else{
-                $request->session()->regenerate();
+            if ($user->role === 'mahasiswa') {
+                if ($user->is_verified == 0) {
+                    Auth::logout();  
+                    return redirect('login')->with('error', 'Akun anda belum diverifikasi. Segera hubungi admin untuk melakukan verifikasi akun');
+                }
 
+                $request->session()->regenerate();  
                 return redirect()->route('userui.dashboard');
             }
-        }else{
-            $request->session()->regenerate();
 
+            $request->session()->regenerate();
             return redirect()->route('adminui.dashboard');
         }
+
+        return back()->with('error', 'Username/Password Salah!');
     }
 
     /**

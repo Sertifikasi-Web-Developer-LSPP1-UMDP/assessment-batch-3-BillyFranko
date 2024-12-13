@@ -8,21 +8,29 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
-     */
     public function handle(Request $request, Closure $next, ...$roles)
     {
+        // If the user is not logged in, redirect to login
         if (!Auth::check()) {
-            return redirect()->route('dashboard');
+            return redirect()->route('login');
         }
 
-        if (!in_array(Auth::user()->role, $roles)) {
-            return redirect()->route('home')->with('error', 'Access Denied'); 
+        $user = Auth::user();
+
+        // Check if the user has the required role
+        if (!in_array($user->role, $roles)) {
+            // Redirect to the appropriate dashboard depending on their role
+            if ($user->role === 'admin') {
+                return redirect()->route('adminui.dashboard');
+            } elseif ($user->role === 'mahasiswa' && $user->is_verified == 1) {
+                return redirect()->route('userui.dashboard');
+            }else{
+                return redirect()->route('login');
+            }
         }
 
+        // Allow access to the next request if role is correct
         return $next($request);
     }
 }
+

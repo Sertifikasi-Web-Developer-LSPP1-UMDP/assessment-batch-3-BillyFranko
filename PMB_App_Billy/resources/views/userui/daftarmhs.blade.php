@@ -82,7 +82,7 @@
                 <div class="col-md-12">
                         <div class="d-md-flex d-grid align-items-center gap-3">
                             <button type="submit" class="btn btn-primary">Submit</button>
-                            <button class="btn btn-danger"><a href="{{ route('userui.dashboard') }}" style="color: white; text-decoration: none;">Back</a></button>
+                            <a href="{{ route('userui.dashboard') }}" class="btn btn-danger" style="color: white; text-decoration: none;">Back</a>
                         </div>
                 </div>
             </form>

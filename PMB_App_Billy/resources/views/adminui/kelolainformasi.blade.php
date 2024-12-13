@@ -18,24 +18,34 @@
             border-radius: 8px; 
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
         }
+
+        table td img {
+            max-width: 100px;
+            max-height: 100px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+        }
+
 </style>
- 
+
 <div class="container">
     <div class="content-box">
+        @if (session('success'))
+                        <div class="alert alert-success" role="alert">
+                            <strong class="font-bold">Pesan Berhasil: </strong>
+                            {{ session('success') }}
+                        </div>
+                    @endif
         <div class="d-flex">
              <div class="me-auto">
                   <h3 class="text-success">Daftar Pengumuman</h3>
         </div>
-        @if (Session::get('success'))
-        <div class="alert alert-success">
-            {{ Session::get('success')}}
-        </div>
-        @endif
         <div class="p-2">
-           <button><a href="{{ route('adminui.dashboard') }}" class="nav-link primary">Kembali ke Dashboard</a></button>
+           <a href="{{ route('adminui.dashboard') }}" class="btn btn-danger">Kembali ke Dashboard</a>
         </div>
         <div class="p-2">
-           <button><a href="{{ route('adminui.buatinformasi') }}" class="nav-link primary">Tambah Pengumuman</a></button>
+           <a href="{{ route('adminui.buatinformasi') }}" class="btn btn-success">Tambah Pengumuman</a>
         </div>
    </div>
    <br>
@@ -47,6 +57,7 @@
                             <th>Id</th>
                             <th>Judul</th>
                             <th>Isi Pengumuman</th>
+                            <th>Lampiran Foto</th>
                             <th>Pencipta</th>
                             <th>Aksi</th>
                         </tr>
@@ -58,6 +69,9 @@
                             <td>{{$data->judul}}</td>
                             <td>
                                 <textarea class="form-control" rows="3" style="width: 100%;" readonly>{{$data->informasi}}</textarea>
+                            </td>
+                            <td>
+                                <img src="{{ asset('storage/' . $data->lampiran_foto) }}" alt="Lampiran Foto">
                             </td>
                             <td>{{$data->user->name ?? 'N/A'}}</td>
                             <td>

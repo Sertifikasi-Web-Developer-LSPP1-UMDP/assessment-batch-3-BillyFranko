@@ -33,7 +33,7 @@
         </div>
         @endif
         <div class="p-2">
-           <button><a href="{{ route('adminui.kelolainformasi') }}" class="nav-link primary">Kelola Pengumuman</a></button>
+           <a href="{{ route('adminui.kelolainformasi') }}" class="btn btn-primary">Kelola Pengumuman</a>
         </div>
    </div>
    <br>
@@ -102,6 +102,8 @@
                             <th>Email</th>
                             <th>Program Studi</th>
                             <th>Waktu Kuliah</th>
+                            <th>Status Verifikasi</th>
+                            <th>Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -119,6 +121,17 @@
                             <td>{{$data_mhs->email}}</td>
                             <td>{{$data_mhs->pilihan_program_studi}}</td>
                             <td>{{$data_mhs->waktu_kuliah_pilihan}}</td>
+                            <td>@if($data_mhs->is_verified == 1) 
+                                    Verified
+                                @else
+                                    Unverified
+                                @endif
+                            <td>
+                                <button class="btn btn-success validate-mhs" data-id="{{ $data_mhs->id }}"
+                                @if($data_mhs->is_verified == 1) 
+                                    disabled 
+                                @endif>Validasi</button>
+                            </td>
                         </tr>
                         @endforeach
                     </tbody>
@@ -131,15 +144,41 @@
 <script>
     $(document).ready(function() {
         $('.validate-btn').click(function() {
-            let studentId = $(this).data('id');
-            let studentName = $(this).closest('tr').find('td:eq(1)').text();
+            let idAkun = $(this).data('id');
+            let namaAkun = $(this).closest('tr').find('td:eq(1)').text();
 
-            if (confirm("Apakah Anda yakin ingin memvalidasi mahasiswa dengan ID " + studentId + " (" + studentName + ")?")) {
+            if (confirm("Apakah Anda yakin ingin memverfiikasi akun dengan ID " + idAkun + " (" + namaAkun + ")?")) {
                 $.ajax({
                     url: "{{ route('adminui.validate') }}",
                     type: 'POST',
                     data: {
-                        id: studentId,
+                        id: idAkun,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        // Handle success response, e.g., update the table row, show a success message
+                        alert(response.message);
+                        location.reload(); // Reload the page to reflect changes
+                    },
+                    error: function(error) {
+                        // Handle error response, e.g., show an error message
+                        alert('Error: ' + error.responseText);
+                    }
+                });
+            }
+        });
+    });
+    $(document).ready(function() {
+        $('.validate-mhs').click(function() {
+            let idMhs = $(this).data('id');
+            let namaMhs = $(this).closest('tr').find('td:eq(1)').text();
+
+            if (confirm("Apakah Anda yakin ingin melakukan verifikasi mahasiswa baru bernama (" + namaMhs + ")?")) {
+                $.ajax({
+                    url: "{{ route('adminui.validatemhs') }}",
+                    type: 'POST',
+                    data: {
+                        id: idMhs,
                         _token: $('meta[name="csrf-token"]').attr('content')
                     },
                     success: function(response) {
@@ -156,6 +195,7 @@
         });
     });
 </script>
+
 @endsection
 
 

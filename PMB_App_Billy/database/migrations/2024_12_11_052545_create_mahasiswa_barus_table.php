@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('pilihan_program_studi');
             $table->enum('waktu_kuliah_pilihan', ['Pagi', 'Sore']);
+            $table->boolean('is_verified')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 

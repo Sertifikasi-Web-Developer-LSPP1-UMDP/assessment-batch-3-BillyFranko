@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Informasi;
 use App\Models\mahasiswa_baru;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,8 +24,11 @@ class UserController extends Controller
     public function indexUser()
     {
         $user = Auth::user();
+        $mahasiswa = mahasiswa_baru::where('user_id', $user->id)->first();
 
-        return view('userui.dashboard', compact('user'));
+        $pengumuman = Informasi::latest()->get();
+
+        return view('userui.dashboard', compact('user', 'mahasiswa', 'pengumuman'));
     }
 
     public function validateAkun(Request $request) 

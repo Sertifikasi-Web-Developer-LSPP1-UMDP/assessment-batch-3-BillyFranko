@@ -33,10 +33,11 @@ class InformasiController extends Controller
     {
         $validate = $request->validate([
             'judul' => 'required',
-            'informasi' => 'required'
+            'informasi' => 'required',
+            'lampiran_foto' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ],[
-            'judul.required' => 'Harus diisi!',
-            'informasi.required' => 'Harus diisi!'
+            'judul.required' => 'Judul harus diisi!',
+            'informasi.required' => 'Isi Pengumuman harus diisi!'
         ]);
 
         $user = Auth::user();
@@ -46,8 +47,12 @@ class InformasiController extends Controller
         $informasi->judul = $validate['judul'];
         $informasi->informasi = $validate['informasi'];
         $informasi->user_id = $user->id;
+        if ($request->hasFile('lampiran_foto') && $request->file('lampiran_foto')->isValid()) {
+            $imagePath = $validate['lampiran_foto']->store('lampiran_informasi', 'public');
+            $informasi->lampiran_foto = $imagePath;
+        }
         $informasi->save();
-        return redirect()->route('adminui.kelolainformasi')->with('Informasi berhasil diumumkan!');
+        return redirect()->route('adminui.kelolainformasi')->with('success','Informasi berhasil diumumkan!');
     }
 
     /**
@@ -58,7 +63,7 @@ class InformasiController extends Controller
         $id = $request->id;
         $informasi = Informasi::findOrFail($id);
         $informasi->delete();
-        return response()->json(['success' => 'Informasi deleted successfully']);
+        return response()->json(['success' => 'Informasi berhasil dihapus!']);
     }
 
     /**
@@ -75,16 +80,42 @@ class InformasiController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Informasi $informasi)
+    public function indexWelcome()
     {
-        //
+        $pengumuman = Informasi::latest()->take(3)->get();
+
+        return view('welcome', compact('pengumuman'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Informasi $informasi)
+    public function postEdit(Request $request, $id)
     {
-        //
+        $validate = $request->validate([
+            'judul' => 'required',
+            'informasi' => 'required',
+            'lampiran_foto' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+        ],[
+            'judul.required' => 'Judul harus diisi!',
+            'informasi.required' => 'Isi Pengumuman harus diisi!'
+        ]);
+
+        $user = Auth::user();
+    
+        $informasi = Informasi::findOrFail($id);
+
+        $informasi->judul = $validate['judul'];
+        $informasi->informasi = $validate['informasi'];
+        $informasi->user_id = $user->id;
+        if ($request->hasFile('lampiran_foto') && $request->file('lampiran_foto')->isValid()) {
+            $imagePath = $validate['lampiran_foto']->store('lampiran_informasi', 'public');
+            $informasi->lampiran_foto = $imagePath;
+        }
+        $informasi->save();
+
+        // $pengumuman = Informasi::with('user')->get();
+
+        return redirect()->route('adminui.kelolainformasi')->with('success','Informasi berhasil diganti!');
     }
 }

@@ -73,15 +73,25 @@ class MahasiswaBaruController extends Controller
         $mahasiswa->user_id = $user->id;
         $mahasiswa->save();
 
-        return redirect()->route('userui.dashboard')->with('Mahasiswa baru berhasil didaftarkan!');
+        return redirect()->route('userui.dashboard')->with('success','Mahasiswa baru berhasil didaftarkan!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(mahasiswa_baru $mahasiswa_baru)
+    public function validateMhs(Request $request) 
     {
-        //
+        $id = $request->id;
+
+        $akun = mahasiswa_baru::findOrFail($id);
+
+        if($akun->is_verified == 0){
+            $akun->is_verified = 1;
+            $akun->save();
+            return response()->json(['message' => 'Mahasiswa Baru berhasil diverifikasi!']);
+        }else{
+            return response()->json(['message' => 'Mahasiswa Baru tidak berhasil diverifikasi!']);
+        }
     }
 
     /**
