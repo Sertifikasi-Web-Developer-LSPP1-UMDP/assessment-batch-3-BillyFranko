@@ -1,22 +1,23 @@
 # PMB_App : Aplikasi Penerimaan Siswa Baru Universitas Documentation
 
-## About App
+## :raising_hand:About App
 Aplikasi PMB_App diciptakan untuk melakukan penerimaan mahasiswa baru dari sebuah universitas menggunakan bahasa pemrograman Laravel dengan berbagai Library.
 
-## Fitur Utama Aplikasi
+## :stars:Fitur Utama Aplikasi
 - **Otentikasi Pengguna**
 - **Otorisasi Pengguna**
 - **Verifikasi Akun**
 - **Penerimaan Mahasiswa & Validasi Data**
 - **Sistem Pengumuman**
 
-## Library yang digunakan 
-- **Backend** : **Laravel Framework 11.35.0**
-- **Bootstrap 5.3.3**
-- **DataTables 1.11.5**
-- **JQuery 3.7.1**
+## :book:Library yang digunakan 
+- **Backend** : [**Laravel Framework 11.35.0**](https://laravel.com/docs/11.x)
+- **Frontend:**
+  - [**Bootstrap 5.3.3**](https://blog.getbootstrap.com/2024/02/20/bootstrap-5-3-3/)
+  - [**DataTables 1.11.5**](https://cdn.datatables.net/1.11.5/)
+  - [**JQuery 3.7.1**](https://jquery.com/download/)
 
-## Requirement untuk Menjalankan Aplikasi Ini
+## :computer:Requirement untuk Menjalankan Aplikasi Ini
 - **Persyaratan Sistem**
   - PHP >= 8.0
   - Composer
@@ -24,7 +25,7 @@ Aplikasi PMB_App diciptakan untuk melakukan penerimaan mahasiswa baru dari sebua
   - Server Web (Apache)
   - Aplikasi Visual Studio Code
 
-## Langkah Instalasi
+## :walking:Langkah Instalasi
 - **Clone Repositori**
   - git clone 
   - cd 
