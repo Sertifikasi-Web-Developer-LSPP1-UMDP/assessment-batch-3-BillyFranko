@@ -24,11 +24,14 @@ Aplikasi PMB_App diciptakan untuk melakukan penerimaan mahasiswa baru dari sebua
   - MySQL
   - Server Web (Apache)
   - Aplikasi Visual Studio Code
+  - Node Package Manager
 
 ## :walking:Langkah Instalasi
 - **Clone Repositori**
-  - git clone 
-  - cd 
+  - git clone repository
+  - cd folder project
+  - npm install
+  - npm run build
 - **Install Composer**
   - composer install
 - **Konfigurasi File .env**
