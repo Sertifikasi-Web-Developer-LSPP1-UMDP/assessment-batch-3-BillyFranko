@@ -1,7 +1,7 @@
 # PMB_App : Aplikasi Penerimaan Siswa Baru Universitas Documentation
 
 ## :raising_hand:About App
-Aplikasi PMB_App diciptakan untuk melakukan penerimaan mahasiswa baru dari sebuah universitas menggunakan bahasa pemrograman Laravel dengan berbagai Library.
+Aplikasi PMB_App diciptakan untuk melakukan penerimaan mahasiswa baru dari sebuah universitas menggunakan bahasa pemrograman PHP dan *framework* Laravel. Selain itu, berbagai jenis Library juga digunakan untuk memastikan pengalaman menggunakan aplikasi yang lebih baik.
 
 ## :stars:Fitur Utama Aplikasi
 - **Otentikasi Pengguna**
