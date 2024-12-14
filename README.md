@@ -28,17 +28,32 @@ Aplikasi PMB_App diciptakan untuk melakukan penerimaan mahasiswa baru dari sebua
 
 ## :walking:Langkah Instalasi
 - **Clone Repositori**
-  - git clone repository
-  - cd folder project
+  ```
+  - git clone https://github.com/Sertifikasi-Web-Developer-LSPP1-UMDP/assessment-batch-3-BillyFranko
+  - cd project assessment-batch-3-BillyFranko
   - npm install
   - npm run build
+  ```
 - **Install Composer**
-  - composer install
+  ```
+  composer install
+  ```
 - **Konfigurasi File .env**
+  - Copy file .env.example kemudian
+  ```
+  php artisan key:generate
+  ```
 - **Jalankan Migrasi Database**
+  ```
+  php artisan migrate
+  ```
 - **Lakukan Koneksi dengan Storage**
-  - php artisan storage:link
+  ```
+  php artisan storage:link
+  ```
 - **Jalankan Aplikasi**
-  - php artisan serve
+  ```
+  php artisan serve
+  ```
 
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/UwpJJG2e)
