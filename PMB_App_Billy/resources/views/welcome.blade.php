@@ -61,7 +61,7 @@
         <div class="carousel-container" id="home-section">
             <div class="container-fluid bg-success">
                 <div class = "container">
-                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 border-bottom">
+                <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 ">
                     <div class="col-md-3 mb-2 mb-md-0">
                         <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
                             <img src="logo-umdp-1-300x248-2.png" alt="Logo" width="150" height="124">
@@ -81,7 +81,7 @@
                 </header>
                 </div>
             </div>
-            <div id="carouselExampleIndicators" class="carousel slide">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
                 <div class="carousel-indicators">
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                     <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
@@ -89,13 +89,13 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="foto.jpg" class="d-block" alt="...">
+                        <img src="foto.jpg" class="d-block" alt="fotocarousel">
                     </div>
                     <div class="carousel-item">
-                        <img src="foto.jpg" class="d-block" alt="...">
+                        <img src="foto2.jpg" class="d-block" alt="fotocarousel">
                     </div>
                     <div class="carousel-item">
-                        <img src="foto.jpg" class="d-block" alt="...">
+                        <img src="foto3.jpg" class="d-block" alt="fotocarousel">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
