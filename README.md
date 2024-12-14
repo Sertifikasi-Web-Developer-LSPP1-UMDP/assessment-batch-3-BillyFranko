@@ -10,7 +10,7 @@ Aplikasi PMB_App diciptakan untuk melakukan penerimaan mahasiswa baru dari sebua
 - **Penerimaan Mahasiswa & Validasi Data**
 - **Sistem Pengumuman**
 
-## :book:Library yang digunakan 
+## :book:Teknologi yang digunakan 
 - **Backend** : [**Laravel Framework 11.35.0**](https://laravel.com/docs/11.x)
 - **Frontend:**
   - [**Bootstrap 5.3.3**](https://blog.getbootstrap.com/2024/02/20/bootstrap-5-3-3/)
