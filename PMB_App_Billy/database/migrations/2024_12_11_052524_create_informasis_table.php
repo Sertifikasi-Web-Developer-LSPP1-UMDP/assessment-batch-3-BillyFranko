@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('informasis', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('informasi');
+            $table->text('informasi');
             $table->unsignedBigInteger('user_id');
             $table->string('lampiran_foto')->nullable();
             $table->timestamps();

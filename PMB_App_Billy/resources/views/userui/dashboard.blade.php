@@ -114,10 +114,10 @@
                             @foreach ($pengumuman as $data)
                                 <div class="col-md-4 mb-4"> 
                                     <div class="card">
-                                        <img class="card-img-top" src="{{ asset('storage/' . $data->lampiran_foto) }}" alt="Card image cap">
+                                        <img class="card-img-top" style="height:200px; width:100%; object-fit:cover;" src="{{ asset('storage/' . $data->lampiran_foto) }}" alt="Card image cap">
                                         <div class="card-body">
-                                            <h5 class="card-title">{{ $data->judul }}</h5>
-                                            <div class="card-body" style="max-height: 200px; overflow-y: auto;">
+                                            <h5 class="card-title" style="height: 50px; overflow-y: auto;">{{ $data->judul }}</h5>
+                                            <div class="card-body" style="height: 150px; overflow-y: auto;">
                                                 <p class="card-text">{{ $data->informasi }}</p>
                                             </div>
                                         </div>
